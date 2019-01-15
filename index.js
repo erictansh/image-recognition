@@ -5,7 +5,7 @@ var app = express();
 app.get("/test",function(req,res){
 
     var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
-    var fs = require('fs');
+    //var fs = require('fs');
 
     var visualRecognition = new VisualRecognitionV3({
         version: '2018-03-19',
@@ -22,8 +22,11 @@ app.get("/test",function(req,res){
     visualRecognition.classify(params, function(err, response) {
         if (err)
             console.log(err);
-        else
-            console.log(JSON.stringify(response, null, 2))
+        else {
+            var result = JSON.stringify(response, null, 2)
+            res.end(result);
+            console.log(result);
+        }
     });
 
 })
