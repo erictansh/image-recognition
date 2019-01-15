@@ -15,5 +15,9 @@
     "url": "https://github.com/erictansh/image-recognition/issues"
   },
   "homepage": "https://github.com/erictansh/image-recognition#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.16.4",
+    "watson-developer-cloud": "^3.15.2"
+  }
 }
