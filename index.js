@@ -24,7 +24,14 @@ app.get("/test",function(req,res){
             console.log(err);
         else {
             var result = JSON.stringify(response, null, 2)
-            res.end(result);
+            var class_col = response.images[0].classifiers[0].classes;
+            for(i=0;i<class_col.length;i++){
+                res.write(class_col[i].class + "\t");
+                res.write(class_col[i].score + "\n");
+            }
+            res.end("END");
+
+            //res.end(result);
             console.log(result);
         }
     });
@@ -32,8 +39,7 @@ app.get("/test",function(req,res){
 })
 
 
-//var listener = app.listen(process.env.PORT,process.env.IP,function(){
 var listener = app.listen(process.env.PORT || 4000, process.env.IP, function(){
 	console.log("server has started");
-	 console.log('Listening on port ' + listener.address().port);
+	console.log('Listening on port ' + listener.address().port);
 });
